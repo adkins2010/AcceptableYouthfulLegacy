@@ -7,13 +7,22 @@ import java.util.List;
 
 public class QueueReconstructor {
 
+	/**
+	 * Time complexity is O(nlogn) + O(n) = O(nlog)
+	 * @param input list of people
+	 * @return queue of people sorted by height (tallest first) and then perceived position
+	 */
 	public static int[][] reconstructQueueByHeight(int[][] input) {
-		Comparator<int[]> heightComparator = Comparator.comparing(ints -> ints[0]);
-		Comparator<int[]> perceivedPostionComparator = Comparator.comparing(ints -> ints[1]);
-		Arrays.sort(input, heightComparator.reversed().thenComparing(perceivedPostionComparator));
+		//first sort by height where tallest people are first
+		Comparator<int[]> heightComparator = Comparator.comparing((int[] person) -> person[0]);
+		Comparator<int[]> perceivedPositionComparator = Comparator.comparing((int[] person) -> person[1]);
+		Arrays.sort(input, heightComparator.reversed().thenComparing(perceivedPositionComparator));
 		List<int[]> result = new ArrayList<>();
-		Arrays.stream(input).forEach((int[] ints) -> {
-			result.add(ints[1], ints);
+		// then take each person and insert them based on perceived position.
+		// it pushes them back.  So, in position 0, [7, 0] goes first.
+		// Later, [5, 0] pushes [7, 0] down second place.
+		Arrays.stream(input).forEach((int[] person) -> {
+			result.add(person[1], person);
 		});
 		return result.toArray(new int[result.size()][]);
 	}
