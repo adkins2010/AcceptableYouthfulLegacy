@@ -8,15 +8,13 @@ public class TopKFrequentElements {
         for (Integer n: nums) {
             count.put(n, (count.get(n) != null ? count.get(n)+1 : 1));
         }
-        Queue<int[]> heap = new PriorityQueue<int[]>((int[] x, int[] y) -> {
-            if(x[1] != y[1]) {
+        Queue<int[]> heap = new PriorityQueue<>((int[] x, int[] y) -> {
+            if (x[1] != y[1]) {
                 return Integer.compare(x[1], y[1]);
             }
             return Integer.compare(x[0], y[0]);
         });
-        count.forEach((num, c) -> {
-            heap.add(new int[]{ -c, num});
-        });
+        count.forEach((num, c) -> heap.add(new int[]{ -c, num}));
         List<Integer> result = new ArrayList<>(k);
         for (int i = 0; i < k; i++) {
             result.add(heap.peek() != null ? heap.poll()[1] : 0);

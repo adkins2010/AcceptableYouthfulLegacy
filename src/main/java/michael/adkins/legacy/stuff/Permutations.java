@@ -59,7 +59,7 @@ public class Permutations {
     public static void main(String[] args) {
         List<Integer> nums = new ArrayList<>(List.of(1, 2, 3));
         System.out.println(permute(nums, 0));
-        System.out.println(permute1(nums, new ArrayList<Integer>()));
+        System.out.println(permute1(nums, new ArrayList<>()));
         System.out.println(quickPermCounting(nums));
     }
 }

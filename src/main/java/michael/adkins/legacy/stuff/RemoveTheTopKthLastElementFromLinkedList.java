@@ -1,8 +1,10 @@
 package michael.adkins.legacy.stuff;
 
+import java.util.Objects;
+
 public class RemoveTheTopKthLastElementFromLinkedList {
     static class Node {
-        int value;
+        final int value;
         Node next;
 
         public Node(int value) {
@@ -18,7 +20,7 @@ public class RemoveTheTopKthLastElementFromLinkedList {
             StringBuilder buf = new StringBuilder();
             buf.append(value);
             if(next != null) {
-                buf.append(next.toString());
+                buf.append(next);
             }
             return buf.toString();
         }
@@ -31,7 +33,7 @@ public class RemoveTheTopKthLastElementFromLinkedList {
             fast = fast.next;
         }
         if(fast == null) {
-            return head.next;
+            return Objects.requireNonNull(head).next;
         }
         Node prev = null;
         while(fast != null) {

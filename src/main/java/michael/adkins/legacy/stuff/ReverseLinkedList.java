@@ -2,7 +2,7 @@ package michael.adkins.legacy.stuff;
 
 public class ReverseLinkedList {
     static class Node {
-        int value;
+        final int value;
         Node next;
 
         public Node(int value) {
@@ -18,7 +18,7 @@ public class ReverseLinkedList {
             StringBuilder buf = new StringBuilder();
             buf.append(value);
             if(next != null) {
-                buf.append(next.toString());
+                buf.append(next);
             }
             return buf.toString();
         }

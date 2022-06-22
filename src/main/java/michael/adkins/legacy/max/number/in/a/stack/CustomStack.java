@@ -4,8 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class CustomStack {
-    List<Integer> stack = new ArrayList<>();
-    List<Integer> maxes = new ArrayList<>();
+    final List<Integer> stack = new ArrayList<>();
+    final List<Integer> maxes = new ArrayList<>();
 
     /**
      * Pushes value onto the stack, but keeps another array for tracking Max

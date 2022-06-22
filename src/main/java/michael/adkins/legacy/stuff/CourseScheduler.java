@@ -50,7 +50,7 @@ public class CourseScheduler {
             }
         }
         for (int courseIndex = 0; courseIndex < numberOfCourses; courseIndex++) {
-            if(dfsCycleCheck(graph, courseIndex, new HashSet<Integer>(), new HashMap<Integer, Boolean>())) {
+            if(dfsCycleCheck(graph, courseIndex, new HashSet<>(), new HashMap<>())) {
                 return false;
             }
         }

@@ -6,7 +6,7 @@ public class NumberSortWithThreeUniqueNumbers {
 
     public static List<Integer> sortNums(List<Integer> nums) {
         List<Integer> sortedList = new ArrayList<>();
-        Map<Integer, Integer> counts = new HashMap<Integer, Integer>();
+        Map<Integer, Integer> counts = new HashMap<>();
         nums.forEach(integer -> {
             Integer count = counts.get(integer);
             counts.put(integer, (count != null ? count + 1 : 0));

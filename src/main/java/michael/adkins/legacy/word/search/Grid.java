@@ -5,9 +5,9 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class Grid {
-    int numberOfRows;
-    int numberOfColumns;
-    List<List<Character>> matrix;
+    final int numberOfRows;
+    final int numberOfColumns;
+    final List<List<Character>> matrix;
 
     public Grid(List<List<Character>> matrix) {
         this.matrix = matrix;
@@ -47,10 +47,7 @@ public class Grid {
         return true;
     }
     public static List<List<Character>> parseIntoMatrix(String[] words) {
-        List<List<Character>> matrix = Arrays.stream(words).map((String word) -> {
-            return word.chars().mapToObj((int code) -> (char) code).collect(Collectors.toList());
-        }).toList();
-        return matrix;
+        return Arrays.stream(words).map((String word) -> word.chars().mapToObj((int code) -> (char) code).collect(Collectors.toList())).toList();
     }
     public static void main(String[] args) {
         String[] words = {"FACI", "OBQP", "ANOB", "MASS"};

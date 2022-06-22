@@ -61,15 +61,12 @@ public class ValidBinarySearchTree {
 			return true;
 		}
 		int val = n.getValue();
-		if ((val > low && val < high) && isValidBSTRecursive(n.getLeft(), low, n.getValue())
-				&& isValidBSTRecursive(n.getRight(), n.getValue(), high)) {
-			return true;
-		}
-		return false;
+		return (val > low && val < high) && isValidBSTRecursive(n.getLeft(), low, n.getValue())
+				&& isValidBSTRecursive(n.getRight(), n.getValue(), high);
 	}
 
 	public static boolean isValidBSTIterative(Node root) {
-		Stack<Node> leftST = new Stack<Node>();
+		Stack<Node> leftST = new Stack<>();
 		Node prev = null;
 		while (!leftST.isEmpty() || root != null) {
 			// traverses left

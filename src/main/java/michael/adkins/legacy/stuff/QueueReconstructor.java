@@ -21,9 +21,7 @@ public class QueueReconstructor {
 		// then take each person and insert them based on perceived position.
 		// it pushes them back.  So, in position 0, [7, 0] goes first.
 		// Later, [5, 0] pushes [7, 0] down second place.
-		Arrays.stream(input).forEach((int[] person) -> {
-			result.add(person[1], person);
-		});
+		Arrays.stream(input).forEach((int[] person) -> result.add(person[1], person));
 		return result.toArray(new int[result.size()][]);
 	}
 
