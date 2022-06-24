@@ -10,7 +10,7 @@ public class IndicesOfTwoNumbersThatEqualASum {
      * @param targetSum target sum
      * @return indices of two different numbers that equaled the sum
      */
-    public static int[] twoSum(List<Integer> nums, int targetSum){
+    public static int[] twoSumIndicesUsingBF(List<Integer> nums, int targetSum) {
             for(int i = 0; i < nums.size(); i++) {
                 for(int j = i+1; j < nums.size(); j++) {
                     if ((!Objects.equals(nums.get(i), nums.get(j))) && (targetSum == (nums.get(i) + nums.get(j)))) {
@@ -22,13 +22,18 @@ public class IndicesOfTwoNumbersThatEqualASum {
     }
 
     /**
+     * Uses hash map to keep the numbers and indices.  Then iterates through
+     * the list of numbers given and subtracts each number by its target sum
+     * and uses the hash map to see if it's present.  If it is then it returns
+     * index of the difference and current index in an array,
+     * if not then it adds the current value and index to the aforementioned hash map.
      * Time Complexity: O(n)
      * Space Complexity: O(n)
      * @param nums list of numbers
      * @param targetSum target sum
      * @return indices of two different numbers that equaled the sum
      */
-    public static int[] twoSum1(List<Integer> nums, int targetSum) {
+    public static int[] twoSumIndicesUsingHashMap(List<Integer> nums, int targetSum) {
         Map<Integer, Integer> indexMap = new HashMap<>();
         for(int i = 0; i < nums.size(); i++) {
             int diff = targetSum - nums.get(i);
@@ -42,7 +47,7 @@ public class IndicesOfTwoNumbersThatEqualASum {
     public static void main(String[] args) {
         List<Integer> nums = new ArrayList<>(List.of(2, 7, 11, 15));
         int targetSum = 18;
-        System.out.println(Arrays.toString(twoSum(nums, targetSum)));
-        System.out.println(Arrays.toString(twoSum1(nums, targetSum)));
+        System.out.println(Arrays.toString(twoSumIndicesUsingBF(nums, targetSum)));
+        System.out.println(Arrays.toString(twoSumIndicesUsingHashMap(nums, targetSum)));
     }
 }
