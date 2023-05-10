@@ -27,6 +27,25 @@
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
 		</dependency>
+<!--		<dependency>-->
+<!--			<groupId>javax.media.jai</groupId>-->
+<!--			<artifactId>com.springsource.javax.media.jai.codec</artifactId>-->
+<!--		</dependency>-->
+<!--		<dependency>-->
+<!--			<groupId>javax.media.jai</groupId>-->
+<!--			<artifactId>com.springsource.javax.media.jai.core</artifactId>-->
+<!--		</dependency>-->
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-webflux</artifactId>
+			<version>6.0.8</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-test</artifactId>
+			<version>5.3.20</version>
+		</dependency>
+
 	</dependencies>
 
 	<build>
