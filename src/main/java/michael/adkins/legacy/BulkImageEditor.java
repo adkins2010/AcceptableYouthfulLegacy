@@ -1,18 +1,15 @@
 package michael.adkins.legacy;
 
 import reactor.core.publisher.Flux;
-import reactor.core.scheduler.Scheduler;
 import reactor.core.scheduler.Schedulers;
 
-import java.awt.Color;
-import java.awt.Graphics2D;
+import javax.imageio.ImageIO;
+import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
-import javax.imageio.ImageIO;
 
 public class BulkImageEditor {
     static File[] getFilesInFolder(String folderPath) {
@@ -30,7 +27,7 @@ public class BulkImageEditor {
         return listOfFiles;
     }
 
-    static File writeBlackBoxToImage(File inputFile) throws IOException {
+    static File writeBlackBoxToImage(File inputFile, String outputFolder) throws IOException {
         BufferedImage inputImage = ImageIO.read(inputFile);
 
         // Create a new image with the same dimensions as the input image
@@ -47,7 +44,7 @@ public class BulkImageEditor {
         int rectY = outputImage.getHeight() - rectHeight;
         g2d.setColor(Color.BLACK);
         g2d.fillRect(rectX, rectY, rectWidth, rectHeight);
-        File outputFile = new File(inputFile.getAbsolutePath());
+        File outputFile = new File(new StringBuilder(outputFolder).append("\\").append(inputFile.getName()).toString());
         ImageIO.write(outputImage, "png", outputFile);
         return inputFile;
     }
@@ -59,16 +56,16 @@ public class BulkImageEditor {
 
     public static void main(String[] args) throws IOException {
 
-//        File inputFile = new File("C:\\Users\\User\\Downloads\\temp\\download (1).png");
-        String folder = "C:\\Users\\User\\Downloads\\temp\\";
+        String inputPath = "";
+        String outputPath = "";
         if(args != null && args.length >= 1) {
-            folder = args[1];
+            inputPath = args[1];
         }
         // Save the output image to a file
-        File[] filesInFolder = getFilesInFolder(folder);
+        File[] filesInFolder = getFilesInFolder(inputPath);
         Flux.fromArray(filesInFolder).subscribeOn(Schedulers.parallel()).filter(BulkImageEditor::fileCondition).mapNotNull(file -> {
             try {
-                return writeBlackBoxToImage(file);
+                return writeBlackBoxToImage(file, outputPath);
             } catch (IOException e) {
                 e.printStackTrace();
             }

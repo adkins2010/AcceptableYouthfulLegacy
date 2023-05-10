@@ -1,7 +1,5 @@
 package michael.adkins.legacy.stuff;
 
-import java.util.Map;
-
 /**
  * Given a graph, and you can only go down or right, what are the total number of paths that you can take to reach the end?
  */

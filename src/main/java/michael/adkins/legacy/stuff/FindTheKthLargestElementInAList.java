@@ -1,7 +1,6 @@
 package michael.adkins.legacy.stuff;
 
 import java.util.*;
-import java.util.stream.Collectors;
 
 /**
  *

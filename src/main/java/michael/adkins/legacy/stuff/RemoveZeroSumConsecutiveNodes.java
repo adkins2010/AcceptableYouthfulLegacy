@@ -1,7 +1,6 @@
 package michael.adkins.legacy.stuff;
 
 import java.util.LinkedHashMap;
-import java.util.LinkedHashSet;
 import java.util.TreeMap;
 
 public class RemoveZeroSumConsecutiveNodes {
